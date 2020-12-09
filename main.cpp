@@ -1,7 +1,14 @@
 #include <iostream>
+#include "ElevatorSystem.h"
+#include "common/DCI.h"
+
 
 auto main() -> int
 {
-    std::cout<<"hello, world!"<<std::endl;
+    ElevatorSystemObject system;
+    system.InitAll(5, 1);
+
+    system.Run();
+
     return 0;
 }
