@@ -15,14 +15,23 @@
 struct WorkQueue {
 public:
     void push_task(WorkTask* task) {
-        task_queue.push(std::move(task));
+        task_queue.push(task);
     }
+
+    void round_core() {
+        if (!task_queue.empty()) {
+            auto task = task_queue.front();
+            task->exec() == done ? push_task(task->get_then()) : push_task(task);
+        }
+    }
+
     void start() {
-        int round = 0;
+        size_t round = 0;
         while(1) {
             size_t task_num = task_queue.size();
             std::cout<<"Round "<<round<<" have "<<task_num<<" tasks"<<std::endl;
             while (task_num > 0) {
+                round_core();
                 task_num--;
             }
             round++;

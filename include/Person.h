@@ -6,8 +6,9 @@
 #define ELEVATOR_PERSON_H
 
 class Person {
+public:
     Person(int target) : targetFloor(target) {}
-    int GetTargetFloor() {
+    int GetTargetFloor() const {
         return targetFloor;
     }
 private:

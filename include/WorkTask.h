@@ -5,11 +5,29 @@
 #ifndef ELEVATOR_WORKTASK_H
 #define ELEVATOR_WORKTASK_H
 
+enum WorkTaskState : bool {
+    done,
+    undone
+};
+
 struct WorkTask {
 public:
-    virtual void exec() = 0;
+    WorkTaskState exec() {
+        left_round--;
+        if (left_round > 0) {
+            return undone;
+        }
+        do_work();
+        return done;
+    }
+    WorkTask* get_then() {
+        return then();
+    }
 private:
-    virtual void then() = 0;
+    virtual void do_work() = 0;
+    virtual WorkTask* then() = 0;
+
+    size_t left_round = 0;
 };
 
 

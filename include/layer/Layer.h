@@ -8,21 +8,51 @@
 #include <queue>
 #include <Person.h>
 
-enum ButtonState {
-    ButtonOn,
-    ButtonOff
+enum ButtonState : bool {
+    button_on,
+    button_off
 };
 
-class Button {
+//enum ButtonAvailable : bool {
+//    available,
+//    non_available
+//};
+
+struct Button {
+public:
+    void TurnOnButton() {
+        state = button_on;
+    }
+    void TurnOffButton() {
+        state = button_off;
+    }
+private:
     ButtonState state;
+
 };
 
 class Layer {
 public:
-    Layer(){std::cout<<"layer ctor"<<std::endl;};
+    Layer(size_t layer) : current_layer(layer) {std::cout<<"layer ctor"<<std::endl;};
     ~Layer(){};
     void Init(){
     };
+    void AddPerson(const Person& person) {
+        if (person.GetTargetFloor() < current_layer) {
+            down_button.TurnOnButton();
+            down_queue.push(person);
+        }
+        else {
+            up_button.TurnOnButton();
+            up_queue.push(person);
+        }
+    }
+private:
+    size_t current_layer;
+    Button down_button;
+    Button up_button;
+    std::queue<Person> down_queue;
+    std::queue<Person> up_queue;
 };
 
 

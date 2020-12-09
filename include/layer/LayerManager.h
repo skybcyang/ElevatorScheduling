@@ -14,7 +14,7 @@ public:
     ~LayerManager(){};
     void Init(uint32_t layerNum){
         for (int i=0; i<layerNum; i++) {
-            auto layer = std::make_shared<Layer>();
+            auto layer = std::make_shared<Layer>(i);
             layer->Init();
             layers.push_back(std::move(layer));
         }
