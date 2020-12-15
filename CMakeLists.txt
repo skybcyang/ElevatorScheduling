@@ -16,4 +16,4 @@ add_executable(elevator
         include/common/nocopyable.h
         include/WorkTask.h
         include/elevator/Elevator.h
-        include/elevator/ElevatorManager.h include/WorkQueue.h include/elevator/ElevatorWorkTask.h include/layer/LayerWorkTask.h)
+        include/elevator/ElevatorManager.h include/WorkQueue.h include/elevator/ElevatorWorkTask.h include/layer/LayerWorkTask.h include/scheduler/Scheduler.h include/elevator/ElevatorInstruction.h include/scheduler/Strategy.h include/layer/LayerState.h include/elevator/ElevatorState.h include/producer/Producer.h include/producer/ProduceStrategy.h)

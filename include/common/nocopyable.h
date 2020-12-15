@@ -8,10 +8,9 @@
 class NonCopyable
 {
 protected:
-    NonCopyable() {}
-    ~NonCopyable() {}
+    NonCopyable() = default
+    virtual ~NonCopyable() = 0;
 private:
-
     NonCopyable(const NonCopyable&);
     const NonCopyable& operator=(const NonCopyable&);
 };

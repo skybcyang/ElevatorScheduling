@@ -4,15 +4,22 @@
 #include <cstdint>
 #include <memory>
 #include <vector>
+#include "ElevatorState.h"
 
 class Elevator {
 public:
-    Elevator(){std::cout<<"elevator ctor"<<std::endl;};
-    ~Elevator(){};
-    void Init(){};
+    Elevator() {std::cout<<"elevator ctor"<<std::endl;}
+    ~Elevator() = default;
+    void Init() {}
+    void OpenDoor() {}
+    void CloseDoor() {}
+    void GoUpwards() {}
+    void GoDownwards() {}
+    ElevatorState GetState() {
+        return state;
+    }
 private:
-    std::vector<int> targetFloors;
-    int currentElevation = 0;
+    ElevatorState state;
 };
 
 #endif

@@ -12,6 +12,7 @@ enum WorkTaskState : bool {
 
 struct WorkTask {
 public:
+    virtual ~WorkTask() = 0;
     WorkTaskState exec() {
         left_round--;
         if (left_round > 0) {
@@ -23,7 +24,8 @@ public:
     WorkTask* get_then() {
         return then();
     }
-private:
+
+protected:
     virtual void do_work() = 0;
     virtual WorkTask* then() = 0;
 

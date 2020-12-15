@@ -7,52 +7,31 @@
 
 #include <queue>
 #include <Person.h>
-
-enum ButtonState : bool {
-    button_on,
-    button_off
-};
-
-//enum ButtonAvailable : bool {
-//    available,
-//    non_available
-//};
-
-struct Button {
-public:
-    void TurnOnButton() {
-        state = button_on;
-    }
-    void TurnOffButton() {
-        state = button_off;
-    }
-private:
-    ButtonState state;
-
-};
+#include <layer/LayerState.h>
 
 class Layer {
 public:
-    Layer(size_t layer) : current_layer(layer) {std::cout<<"layer ctor"<<std::endl;};
-    ~Layer(){};
-    void Init(){
-    };
+    explicit Layer(size_t layer) {
+        std::cout<<"layer ctor"<<std::endl;
+        state.current_layer = layer;
+    }
+    ~Layer() = default;
+    void Init() {}
     void AddPerson(const Person& person) {
-        if (person.GetTargetFloor() < current_layer) {
-            down_button.TurnOnButton();
-            down_queue.push(person);
+        if (person.GetTargetFloor() < state.current_layer) {
+            state.down_button.TurnOnButton();
+            state.down_queue.push(person);
         }
         else {
-            up_button.TurnOnButton();
-            up_queue.push(person);
+            state.up_button.TurnOnButton();
+            state.up_queue.push(person);
         }
     }
+    LayerState GetState() {
+        return state;
+    }
 private:
-    size_t current_layer;
-    Button down_button;
-    Button up_button;
-    std::queue<Person> down_queue;
-    std::queue<Person> up_queue;
+    LayerState state;
 };
 
 

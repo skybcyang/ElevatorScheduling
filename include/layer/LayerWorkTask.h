@@ -8,13 +8,10 @@
 #include <WorkTask.h>
 
 namespace LayerWorkTask {
-    struct OpenTask : WorkTask {
+    struct AddPersonTask : public WorkTask { // 自己循环，随机加人，后续来通过文件输入
 
     }
-    struct CloseTask : WorkTask {
-
-    }
-    struct RunningTask : WorkTask {
+    struct LoadPersonTask : public WorkTask { // 把人装入电梯，需要知道电梯是去往哪
 
     }
 }
