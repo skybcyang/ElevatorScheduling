@@ -22,7 +22,7 @@ public:
     std::vector<ElevatorState> GetElevatorState() {
         std::vector<ElevatorState> elevator_state;
         for (const auto& elevator : elevators) {
-            elevator_state.push_back(elevator.GetState());
+            elevator_state.push_back(elevator->GetState());
         }
         return elevator_state;
     }

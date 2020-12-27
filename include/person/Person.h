@@ -7,7 +7,7 @@
 
 class Person {
 public:
-    Person(int target) : targetFloor(target) {}
+    explicit Person(int target) : targetFloor(target) {}
     int GetTargetFloor() const {
         return targetFloor;
     }

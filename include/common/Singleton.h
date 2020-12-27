@@ -7,16 +7,16 @@
 #include <iostream>
 
 template <typename T>
-class Sington : public T {
+class Singleton : public T {
 public:
     template <typename ...Ts>
-    static Sington& GetInstance() {
-        static Sington* instance = new Sington();
+    static Singleton& GetInstance() {
+        static auto* instance = new Singleton();
         return *instance;
     }
 private:
     template <typename ...Ts>
-    Sington(Ts... args) : T(std::forward<Ts>(args)...) {}
+    explicit Singleton(Ts... args) : T(std::forward<Ts>(args)...) {}
 };
 
 #endif //ELEVATOR_SINGLETON_H

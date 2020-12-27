@@ -10,10 +10,11 @@ add_executable(elevator
         include/common/DCI.h
         include/layer/Layer.h
         include/layer/LayerManager.h
-        include/Person.h
+        include/person/Person.h
         include/DefaultSetting.h
         include/common/Singleton.h
         include/common/nocopyable.h
-        include/WorkTask.h
+        include/IWorkTask.h
         include/elevator/Elevator.h
-        include/elevator/ElevatorManager.h include/WorkQueue.h include/elevator/ElevatorWorkTask.h include/layer/LayerWorkTask.h include/scheduler/Scheduler.h include/elevator/ElevatorInstruction.h include/scheduler/Strategy.h include/layer/LayerState.h include/elevator/ElevatorState.h include/producer/Producer.h include/producer/ProduceStrategy.h)
+        include/elevator/ElevatorManager.h include/WorkQueue.h include/scheduler/Scheduler.h include/elevator/ElevatorInstruction.h include/scheduler/Strategy.h include/layer/LayerState.h include/elevator/ElevatorState.h include/person/Producer.h test/test_.cpp include/person/ProduceStrategy.h third_party/catch.hpp)
+

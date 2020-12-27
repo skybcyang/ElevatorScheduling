@@ -2,18 +2,25 @@
 // Created by skybcyang on 2020/12/9.
 //
 
-#ifndef ELEVATOR_WORKTASK_H
-#define ELEVATOR_WORKTASK_H
+#ifndef ELEVATOR_IWORKTASK_H
+#define ELEVATOR_IWORKTASK_H
 
 enum WorkTaskState : bool {
     done,
     undone
 };
 
-struct WorkTask {
+struct Executable {
+    virtual WorkTaskState exec() = 0;
+};
+
+struct IWorkTask : Executable {
 public:
-    virtual ~WorkTask() = 0;
+    virtual ~IWorkTask() = default;
     WorkTaskState exec() {
+        if (left_round == 0) {
+            return done;
+        }
         left_round--;
         if (left_round > 0) {
             return undone;
@@ -21,16 +28,12 @@ public:
         do_work();
         return done;
     }
-    WorkTask* get_then() {
-        return then();
-    }
 
-protected:
+private:
     virtual void do_work() = 0;
-    virtual WorkTask* then() = 0;
 
     size_t left_round = 0;
 };
 
 
-#endif //ELEVATOR_WORKTASK_H
+#endif //ELEVATOR_IWORKTASK_H

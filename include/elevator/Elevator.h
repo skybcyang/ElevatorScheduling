@@ -4,7 +4,7 @@
 #include <cstdint>
 #include <memory>
 #include <vector>
-#include "ElevatorState.h"
+#include <elevator/ElevatorState.h>
 
 class Elevator {
 public:
@@ -13,8 +13,6 @@ public:
     void Init() {}
     void OpenDoor() {}
     void CloseDoor() {}
-    void GoUpwards() {}
-    void GoDownwards() {}
     ElevatorState GetState() {
         return state;
     }

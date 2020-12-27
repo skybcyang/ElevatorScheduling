@@ -7,7 +7,8 @@
 
 // 这个应该也是一个单例
 struct Producer {
-    Producer() {
+    Producer() = default;
+    void ProducePerson() {
     }
 };
 

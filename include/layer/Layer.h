@@ -6,7 +6,7 @@
 #define ELEVATOR_LAYER_H
 
 #include <queue>
-#include <Person.h>
+#include <person/Person.h>
 #include <layer/LayerState.h>
 
 class Layer {
@@ -20,11 +20,11 @@ public:
     void AddPerson(const Person& person) {
         if (person.GetTargetFloor() < state.current_layer) {
             state.down_button.TurnOnButton();
-            state.down_queue.push(person);
+            down_queue.push(person);
         }
         else {
             state.up_button.TurnOnButton();
-            state.up_queue.push(person);
+            up_queue.push(person);
         }
     }
     LayerState GetState() {
@@ -32,6 +32,8 @@ public:
     }
 private:
     LayerState state;
+    std::queue<Person> down_queue;
+    std::queue<Person> up_queue;
 };
 
 

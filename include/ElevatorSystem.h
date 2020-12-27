@@ -5,15 +5,19 @@
 #include <layer/LayerManager.h>
 #include <WorkQueue.h>
 #include <common/DCI.h>
+#include <common/Singleton.h>
 
 #include <cstdint>
 #include <memory>
 #include <vector>
 
+#include <elevator/ElevatorWorkTask.h>
+#include <layer/LayerWorkTask.h>
+
 
 class ElevatorSystem {
 public:
-    ElevatorSystem() {};
+    ElevatorSystem() = default;
     ~ElevatorSystem() = default;
 
     void InitAll(uint32_t layerNum, uint32_t elevatorNum) {
@@ -24,6 +28,9 @@ public:
         ROLE(ElevatorManager).Init(elevatorNum);
     }
     void Run() {
+        ROLE(WorkQueue).clear();
+        ROLE(WorkQueue).push_task(std::make_shared<>());
+        ROLE(WorkQueue).push_task(std::make_shared<>());
         ROLE(WorkQueue).start();
     }
     

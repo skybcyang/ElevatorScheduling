@@ -26,7 +26,5 @@ struct LayerState {
     size_t current_layer;
     Button down_button;
     Button up_button;
-    std::queue<Person> down_queue;
-    std::queue<Person> up_queue;
 };
 #endif //ELEVATOR_LAYERSTATE_H

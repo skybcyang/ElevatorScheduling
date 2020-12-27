@@ -9,7 +9,8 @@ enum ElevatorInstruction {
     go_upward,
     go_downward,
     open_door,
-    close_door
+    close_door,
+    stand_by
 };
 
 #endif //ELEVATOR_ELEVATORINSTRUCTION_H
